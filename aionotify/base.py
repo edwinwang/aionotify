@@ -65,7 +65,8 @@ class Watcher:
         wd = self.descriptors[alias]
         errno = LibC.inotify_rm_watch(self._fd, wd)
         if errno != 0:
-            raise IOError("Failed to close watcher %d: errno=%d" % (wd, errno))
+            #raise IOError("Failed to close watcher %d: errno=%d" % (wd, errno))
+            print(f"unwatch {alias} fail !!!")
         del self.descriptors[alias]
         del self.requests[alias]
         del self.aliases[wd]
